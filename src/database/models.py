@@ -28,7 +28,7 @@ class Review(Base):
 class Product(Base):
     __tablename__ =  "products"
 
-    id: Mapped[str] = mapped_column(String(), primary_key=True, default=uuid4())
+    id: Mapped[str] = mapped_column(String(), primary_key=True)
     name: Mapped[str] = mapped_column(String())
     description: Mapped[str] = mapped_column(String())
     img_url: Mapped[str] = mapped_column(String)
