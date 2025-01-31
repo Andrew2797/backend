@@ -30,7 +30,8 @@ class ProductAPI(Resource):
                 "id":product.id,
                 "name": product.name,
                 "description": product.description,
-                "img_url": product.img_url
+                "img_url": product.img_url,
+                "price": product.price
             })
 
         data_json = jsonify(data)
@@ -86,9 +87,12 @@ def delete(self, product_id: str):
     response.status_code =201
     return response
 
-
+class ReviewAPI(Resource):
+    def get(self, review_id):
+        pass
 
 api.add_resource(ProductAPI, "/api/products/", "/api/products/<product_id>/")
+#api.add_resource()
 
 if __name__ == "__main__":
     app.run(debug=True, port=3000)
