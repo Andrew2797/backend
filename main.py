@@ -46,46 +46,46 @@ class ProductAPI(Resource):
             products = db_actions.get_products()
             return self.row_db_to_json(products)
 
-def post(self):
-    parse = reqparse.RequestParser
-    parse.add_argument("name")
-    parse.add_argument("description")
-    parse.add_argument("img_url")
-    parse.add_argument("price")
-    args = parse.parse_args()
-    prod_id = db_actions.add_product(
-        name =args.get("name"),
-        description=args.get("description"),
-        img_url=args.get("img_url"),
-        price=args.get("price")
-    )
-    response = jsonify(dict(product_id=prod_id))
-    response.status_code = 201
-    return response
+    def post(self):
+        parse = reqparse.RequestParser
+        parse.add_argument("name")
+        parse.add_argument("description")
+        parse.add_argument("img_url")
+        parse.add_argument("price")
+        args = parse.parse_args()
+        prod_id = db_actions.add_product(
+            name =args.get("name"),
+            description=args.get("description"),
+            img_url=args.get("img_url"),
+            price=args.get("price")
+        )
+        response = jsonify(dict(product_id=prod_id))
+        response.status_code = 201
+        return response
 
-def put(self, product_id: str):
-    parse = reqparse.RequestParser()
-    parse.add_argument("name")
-    parse.add_argument("description")
-    parse.add_argument("price")
-    parse.add_argument("img_url")
-    args = parse.parse_args()
-    msg = db_actions.edit_product(
-        prod_id=product_id,
-        name=args.get("name"),
-        description=args.get("description"),
-        img_url=args.get("img_url"),
-        price=args.get("price")
-    )
-    response = jsonify(msg)
-    response.status_code = 201
-    return response
+    def put(self, product_id: str):
+       parse = reqparse.RequestParser()
+       parse.add_argument("name")
+       parse.add_argument("description")
+       parse.add_argument("price")
+       parse.add_argument("img_url")
+       args = parse.parse_args()
+       msg = db_actions.edit_product(
+           prod_id=product_id,
+           name=args.get("name"),
+           description=args.get("description"),
+           img_url=args.get("img_url"),
+           price=args.get("price")
+       )
+       response = jsonify(msg)
+       response.status_code = 201
+       return response
 
-def delete(self, product_id: str):
-    msg = db_actions.del_product(product_id)
-    response = jsonify(msg)
-    response.status_code =201
-    return response
+    def delete(self, product_id: str):
+        msg = db_actions.del_product(product_id)
+        response = jsonify(msg)
+        response.status_code =201
+        return response
 
 class ReviewAPI(Resource):
     def get(self, review_id):
