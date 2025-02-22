@@ -107,7 +107,7 @@ class TokenAPI(Resource):
     @jwt_required(refresh=True)
     def get(self):
         user_id = get_jwt_identity()
-        access_token = create_access_token(indentity=user_id)    
+        access_token = create_access_token(identity=user_id)    
         response = jsonify(dict(access_token=access_token))
         response.status_code = 200
         return response

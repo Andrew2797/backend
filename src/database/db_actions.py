@@ -11,7 +11,7 @@ def get_products() -> List[Product]:
 
 
 def get_product(prod_id: str) -> Product:
-    db.one_or_404(db.session.query(Product).where(Product.id == prod_id))
+    return db.one_or_404(db.session.query(Product).where(Product.id == prod_id))
     #return db.session.query(Product).where(Product.id == prod_id).first()
 
 

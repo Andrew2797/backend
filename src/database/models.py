@@ -27,7 +27,7 @@ class Product(Base):
     id: Mapped[str] = mapped_column(String(), primary_key=True)
     name: Mapped[str] = mapped_column(String())
     description: Mapped[str] = mapped_column(String())
-    img_url: Mapped[str] = mapped_column(String)
+    img_url: Mapped[str] = mapped_column(String())
     price: Mapped[float] = mapped_column()
     reviews: Mapped[List[Review]] = relationship(secondary=rev_prod_assoc)
 
