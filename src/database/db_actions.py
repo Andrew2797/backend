@@ -104,7 +104,7 @@ def add_user(
     return "Successful"
 
 def get_user(user_id: str):
-    return db.one_or_404(db.session.query(User))
+    return db.one_or_404(db.session.query(User).where(User.id==user_id))
 
 
 def get_tokens(email: str, password:str) -> dict|None:
